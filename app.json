@@ -9,11 +9,9 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#fffafa"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -25,6 +23,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Quicksand-Bold.otf",
+            "./assets/fonts/Quicksand-light.otf",
+            "./assets/fonts/Quicksand-Medium.otf",
+            "./assets/fonts/Quicksand-Regular.otf",
+            "./assets/fonts/Quicksand-SemiBold.otf"
+          ]
+        }
+      ]
+    ]
   }
 }
