@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     columnGap: 3,
+    padding: 8,
   },
   reactionText: {
     fontFamily: "quickSemiBold",

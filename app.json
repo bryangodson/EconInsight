@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#fffafa"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.danquodes.econinsight"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -37,6 +40,14 @@
           ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9c0f5754-ae06-42f0-939a-9b97438a3c7b"
+      }
+    }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-5953493288912761~8143190614"
   }
 }

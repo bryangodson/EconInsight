@@ -12,6 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 const Stack = createStackNavigator();
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+
 const config = {
   animation: "spring",
   config: {
@@ -26,6 +27,8 @@ const config = {
 function App() {
   useEffect(() => {
     NavigationBar.setBackgroundColorAsync("#fff");
+    NavigationBar.setVisibilityAsync("hidden");
+    NavigationBar.setBehaviorAsync("overlay-swipe");
   }, []);
   const [fontsLoaded, fontError] = useFonts({
     quickBold: require("./assets/fonts/Quicksand-Bold.otf"),

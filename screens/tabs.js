@@ -37,7 +37,7 @@ const Tabs = () => {
           fontFamily: "quickSemiBold",
         },
       })}
-      backBehavior="history"
+      backBehavior="none"
       initialRouteName="Home"
     >
       <Tab.Screen name="Home" component={Home} />
