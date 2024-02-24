@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#fffafa"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,7 +20,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.danquodes.econinsight"
+      "package": "com.danquodes.econinsight",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

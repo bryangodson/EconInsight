@@ -4,13 +4,13 @@ import { colors } from "../assets/defaults";
 
 import { Octicons } from "@expo/vector-icons";
 
-const Tag = ({ title, iconName }) => {
+const Tag = ({ title, iconName, action }) => {
   return (
     <View>
       <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple(colors.white, false)}
         onPress={() => {
-          console.log(title + " is clicked");
+          action();
         }}
       >
         <View style={styles.tag}>

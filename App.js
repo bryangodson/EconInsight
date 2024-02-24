@@ -12,7 +12,8 @@ import { NavigationContainer } from "@react-navigation/native";
 const Stack = createStackNavigator();
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-
+import "expo-dev-client";
+import mobileAds from "react-native-google-mobile-ads";
 const config = {
   animation: "spring",
   config: {
@@ -29,6 +30,13 @@ function App() {
     NavigationBar.setBackgroundColorAsync("#fff");
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe");
+    mobileAds()
+      .initialize()
+      .then((adapterStatuses) => {
+        // Initialization complete!
+        console.log("ads loaded successfully");
+        console.log(adapterStatuses);
+      });
   }, []);
   const [fontsLoaded, fontError] = useFonts({
     quickBold: require("./assets/fonts/Quicksand-Bold.otf"),

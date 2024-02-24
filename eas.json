@@ -13,12 +13,26 @@
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "preview3": {
-      "developmentClient": true
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     },
     "preview4": {
       "distribution": "internal"
     },
     "production": {}
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../pc-api-6916024975314481965-527-a5b8e17860ab.json",
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "john@turtle.com",
+        "ascAppId": "1234567890",
+        "appleTeamId": "AB12XYZ34S"
+      }
+    }
   }
 }

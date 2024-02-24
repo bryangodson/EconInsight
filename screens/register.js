@@ -105,21 +105,8 @@ const Register = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <View>
-          <TouchableOpacity onPress={() => {}}>
-            <Text
-              style={{
-                textAlign: "right",
-                fontFamily: "quickRegular",
-                color: colors.black,
-              }}
-            >
-              Forgot Password?
-            </Text>
-          </TouchableOpacity>
-        </View>
         <TouchableNativeFeedback
-          background={TouchableNativeFeedback.Ripple(colors.white, false)}
+          background={TouchableNativeFeedback.Ripple(colors.primary, false)}
           onPress={() => {
             navigation.navigate("Tabs");
           }}
@@ -128,16 +115,32 @@ const Register = ({ navigation }) => {
             <Text style={styles.loginText}>Log in</Text>
           </View>
         </TouchableNativeFeedback>
-        <View style={{ marginTop: 20 }}>
+        <View
+          style={{
+            marginTop: 20,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <TouchableOpacity onPress={() => {}}>
             <Text
               style={{
-                textAlign: "left",
                 fontFamily: "quickRegular",
                 color: colors.black,
               }}
             >
-              I am not signed up.
+              Create new account
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => {}}>
+            <Text
+              style={{
+                fontFamily: "quickRegular",
+                color: colors.black,
+              }}
+            >
+              Forgot Password?
             </Text>
           </TouchableOpacity>
         </View>

@@ -3,6 +3,7 @@ export const colors = {
   secondary: "#C53F3F",
   white: "#fffafa",
   black: "#252525",
+  blueBlack: "#001F3F",
 };
 export const fontsSettings = {
   veryBig: 22,

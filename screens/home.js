@@ -4,7 +4,6 @@ import {
   View,
   NativeModules,
   Image,
-  Pressable,
   ScrollView,
   FlatList,
   TouchableOpacity,
@@ -19,14 +18,57 @@ import News from "../components/news";
 import { StatusBar } from "expo-status-bar";
 import { data } from "../assets/data";
 
-const Home = ({ navigation }) => {
-  const [name, setName] = useState("Tina");
-  const [news, setNews] = useState(data);
+// admob configurations
+import {
+  InterstitialAd,
+  TestIds,
+  AdEventType,
+  BannerAd,
+  BannerAdSize,
+} from "react-native-google-mobile-ads";
 
+const adUnitId = __DEV__
+  ? TestIds.INTERSTITIAL
+  : "ca-app-pub-5953493288912761/1115937206";
+const bannerADiD = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : "cca-app-pub-5953493288912761/3056006158";
+const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+  requestNonPersonalizedAdsOnly: true,
+});
+const Home = ({ navigation }) => {
+  const [name, setName] = useState("Scisca");
+  const [news, setNews] = useState(data);
+  const [loaded, setLoaded] = useState(false);
+  const loadInterstitial = () => {
+    const unsubscribe = interstitial.addAdEventListener(
+      AdEventType.LOADED,
+      () => {
+        setLoaded(true);
+      }
+    );
+
+    // Start loading the interstitial straight away
+    interstitial.load();
+
+    // Unsubscribe from events on unmount
+    return unsubscribe;
+  };
+  useEffect(() => {
+    loadInterstitial();
+  }, []);
+  const showAds = () => {
+    if (loaded) {
+      interstitial.show();
+      setLoaded(false);
+    } else {
+      loadInterstitial();
+    }
+  };
   return (
     <View style={styles.container}>
       {/* header components */}
-      <StatusBar backgroundColor={colors.white} />
+      <StatusBar backgroundColor={colors.white} style="dark" />
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => {
@@ -101,14 +143,36 @@ const Home = ({ navigation }) => {
           }}
           showsHorizontalScrollIndicator={false}
         >
-          <Tag title="Trending" iconName="broadcast" />
-          <Tag title="Just In" iconName="clock" />
-          <Tag title="Insights" iconName="light-bulb" />
-          <Tag title="Exclusive" iconName="flame" />
-          <Tag title="In Focus" iconName="device-camera-video" />
+          <Tag title="Trending" iconName="broadcast" action={() => showAds()} />
+          <Tag title="Just In" iconName="clock" action={() => showAds()} />
+          <Tag
+            title="Insights"
+            iconName="light-bulb"
+            action={() => showAds()}
+          />
+          <Tag title="Exclusive" iconName="flame" action={() => showAds()} />
+          <Tag
+            title="In Focus"
+            iconName="device-camera-video"
+            action={() => showAds()}
+          />
         </ScrollView>
       </View>
       {/* news content */}
+      <View>
+        <TouchableOpacity onPress={() => showAds()}>
+          <Text>{loaded ? "show ads" : "loading add..."}</Text>
+        </TouchableOpacity>
+        <BannerAd
+          unitId={bannerADiD}
+          size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+          requestOptions={{
+            networkExtras: {
+              collapsible: "bottom",
+            },
+          }}
+        />
+      </View>
 
       <FlatList
         data={news}
@@ -149,7 +213,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
     backgroundColor: colors.white,
-    marginBottom: 10,
+    marginBottom: 0,
   },
   name: {
     fontFamily: "quickRegular",

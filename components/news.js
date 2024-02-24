@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 5,
     textTransform: "capitalize",
-    color: colors.black,
+    color: colors.blueBlack,
   },
   newsSummary: {
     fontFamily: "quickMedium",
